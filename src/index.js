@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import "./index.css"
-
+import App from "./App.js"
 function Make(props){          //this component makes a section for each leader and return it
-    return(<div className="details">
+    return(
+        <div className="details">
         <img src={props.image} alt="leader images"></img>
         <div>Name:<b>{props.name}</b></div>
         <div>Birth:<b>{props.birth}</b></div>
@@ -18,8 +19,10 @@ function Leaders(){     //this component contains leader details and return when
                  {image:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Jawaharlal_Nehru_stamp_%28cropped%29.jpg/150px-Jawaharlal_Nehru_stamp_%28cropped%29.jpg",name:"Jawaharlal Nehru",birth:"(1889–1964)",state:"Uttar Pradesh"},
                  {image:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Mutter_Teresa_von_Kalkutta.jpg/150px-Mutter_Teresa_von_Kalkutta.jpg",name:"Mother Teresa",birth:"(1910–1997)",state:"West Bengal"}
                 ]
-    return( 
-        <div className="section">{
+    return(
+        <div className="section">
+        <App/>
+        {
         Details.map(val=>{
         return<Make image={val.image} name={val.name} birth={val.birth} state={val.state}/>
     })  }
