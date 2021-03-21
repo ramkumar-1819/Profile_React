@@ -1,33 +1,86 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import "./index.css"
-import App from "./App.js"
-function Make(props){          //this component makes a section for each leader and return it
-    return(
-        <div className="details">
-        <img src={props.image} alt="leader images"></img>
-        <div>Name:<b>{props.name}</b></div>
-        <div>Birth:<b>{props.birth}</b></div>
-        <div>State:<b>{props.state}</b></div>
-        </div>)
-}
+import './index.css';
 
-function Leaders(){     //this component contains leader details and return when all section for leaders are maked.
-    var Details=[{image:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Ambedkar_1966_stamp_of_India_%28cropped%29.jpg/150px-Ambedkar_1966_stamp_of_India_%28cropped%29.jpg",name:"B.R.Ambedkar",birth:"(1891–1956)",state:"Maharastra"},
-                 {image:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/APJ_Abdul_Kalam_2015_stamp_of_India_%28cropped%29.jpg/150px-APJ_Abdul_Kalam_2015_stamp_of_India_%28cropped%29.jpg",name:"A.P.J.Abdul Kalam",birth:"(1931–2015)",state:"TamilNadu"},
-                 {image:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Vallabhbhai_Patel_1975_stamp_of_India.jpg/150px-Vallabhbhai_Patel_1975_stamp_of_India.jpg",name:"Vallabhbhai Patel",birth:"(1875–1950)",state:"Gujarat"},
-                 {image:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Jawaharlal_Nehru_stamp_%28cropped%29.jpg/150px-Jawaharlal_Nehru_stamp_%28cropped%29.jpg",name:"Jawaharlal Nehru",birth:"(1889–1964)",state:"Uttar Pradesh"},
-                 {image:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Mutter_Teresa_von_Kalkutta.jpg/150px-Mutter_Teresa_von_Kalkutta.jpg",name:"Mother Teresa",birth:"(1910–1997)",state:"West Bengal"}
-                ]
-    return(
-        <div className="section">
-        <App/>
-        {
-        Details.map(val=>{
-        return<Make image={val.image} name={val.name} birth={val.birth} state={val.state}/>
-    })  }
-        </div>
+import reportWebVitals from './reportWebVitals';
+
+class Display extends React.Component{    //class Component
+  constructor(){
+    super();
+    this.state={ userData: [              
+      { id: '1', name: 'Joe', user_type: 'Developer', age:31, years:11 },
+      { id: '2', name: 'Hill', user_type: 'Designer', age:26, years:4 },
+      { id: '3', name: 'John', user_type: 'Teacher', age:24,years: 2},
+      { id: '4', name: 'Sam', user_type: 'Entreprenuer', age:58,years:25},
+      { id: '5', name: 'Jack', user_type: 'Designer', age:43, years: 18}
+      ]}
+  }
+  render(){
+    var element= this.state.userData.filter(val=>{return(val.user_type==="Designer")}) //contain array whose designation is designer
+    var element1=this.state.userData.filter(val=>{return(val.name.startsWith("J"))})   //Contain array whose name starts with "J"
+    var element2=this.state.userData.filter(val=>{return(val.age>28 && val.age<51)})   //contain array whose age is <51 and age>28
+    
+    return(       
+      <div className="display">  
+
+      <div className="main1">{
+        this.state.userData.map(val=>{return(
+          <div className="details">
+          <div>Id:{val.id}</div>
+          <div>Name:{val.name}</div>
+          <div>Designation:{val.user_type}</div>
+          </div>)
+        })
+      }
+      </div>
+
+      <div className="main2">{
+        element.map(val=>{return(
+          <div className="details">
+          <div>Id:{val.id}</div>
+          <div>Name:{val.name}</div>
+          <div>Designation:{val.user_type}</div>
+          </div>)
+        })
+      }
+      </div>
+
+      <div className="main3">{
+        element1.map(val=>{return(
+          <div className="details">
+          <div>Id:{val.id}</div>
+          <div>Name:{val.name}</div>
+          <div>Designation:{val.user_type}</div>
+          </div>)
+        })
+      }
+      </div>
+
+      <div className="main4">{
+        element2.map(val=>{return(
+          <div className="details">
+          <div>Id:{val.id}</div>
+          <div>Name:{val.name}</div>
+          <div>Designation:{val.user_type}</div>
+          </div>)
+        })
+      }
+      </div>
+
+      <div className="main4">{
+        <div>
+            <div>{this.state.userData.filter(val=>{return val.user_type==="Designer"}).reduce((tot,val)=>{return tot+val.years},0)}</div>
+            </div>
+      }
+      </div>
+      
+      </div>
     )
+  }
 }
+ReactDOM.render(<Display />,document.getElementById('root'));
 
-ReactDOM.render(<Leaders/>,document.getElementById("root"))
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
