@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+
 import './App.css';
+import Display from './Display/DisplayComponent'
+
 
 function App() {
-  return (
-    <div className="App">
-      <h1>hi</h1>
-    </div>
-  );
+  return (<div>
+          <div className="title">PROSTARS</div>
+          <Display/>   
+          </div>);             //Display component hold the details of these stars
 }
 
 export default App;
