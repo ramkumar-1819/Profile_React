@@ -1,0 +1,9 @@
+.about{
+    border:1px solid white;
+    background-color: blueviolet;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+.about>pre{
+    font-family:monospace;
+}

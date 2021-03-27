@@ -1,13 +1,40 @@
+import React from 'react';
+import Contact from './Contact/Contact.jsx';
+import About from './About/About.jsx';
+import Header from'./Headers.jsx';
+import './App.css'
 
-import './App.css';
-import Display from './Display/DisplayComponent'
+import {BrowserRouter as Router,
+        Switch,
+        Route,
+        Link
+        } from 'react-router-dom'
 
+class App extends React.Component{
 
-function App() {
-  return (<div>
-          <div className="title">PROSTARS</div>
-          <Display/>   
-          </div>);             //Display component hold the details of these stars
+       render(){
+           return(<div className="main">
+               <div className="head">
+                   Ramkumar T<br/>B.E Computer Science and Engineering<br/>Chennai
+               </div>
+               <Router>
+                   <div className="navigation">
+                    <Header/>
+                    </div>
+                    <Switch>
+                        <Route path="/about">
+                            <About/>
+                        </Route>
+                        <Route path="/contact">
+                            <Contact/>
+                        </Route>
+                   </Switch>
+               </Router>
+               </div>
+           )
+       }
+
 }
+export default App
 
-export default App;
+

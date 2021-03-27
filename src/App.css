@@ -5,3 +5,33 @@
   height:100px;
   background-color: white;
 }
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+.head{
+  border-radius: 10px;
+  background-color: white;
+  font-weight: bold;
+  width:300px;
+  text-align: center;
+}
+.navigation{
+  margin-top: 5px;
+  padding:5px;
+  border: 1px solid white;
+  border-radius: 10px;
+  width:200px;
+  height:25px;
+  background-color: red;
+  display: flex;
+  justify-content: space-evenly;
+}
+a:hover{
+  color: aliceblue;
+}
+a:link{
+  text-decoration: none;
+}
